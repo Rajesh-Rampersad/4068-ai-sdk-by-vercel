@@ -18,7 +18,8 @@ export const ChatContainer = () => {
         input, 
         handleInputChange, 
         handleSubmit,
-        isLoading
+        isLoading,
+        stop
     } = useChat()
 
     return (
@@ -38,6 +39,9 @@ export const ChatContainer = () => {
             </div>
             {isLoading && <div>
                 <Loader />
+                <Button variant='danger' onClick={stop} >
+                    <IconStop /> parar
+                </Button>
             </div>}
             <ChatForm 
                 input={input}
