@@ -13,7 +13,13 @@ import { useChat } from 'ai/react'
 
 export const ChatContainer = () => {
 
-    const { messages, input, handleInputChange, handleSubmit } = useChat()
+    const { 
+        messages, 
+        input, 
+        handleInputChange, 
+        handleSubmit,
+        isLoading
+    } = useChat()
 
     return (
         <section className={styles.container}>
@@ -30,6 +36,9 @@ export const ChatContainer = () => {
                 ))}
 
             </div>
+            {isLoading && <div>
+                <Loader />
+            </div>}
             <ChatForm 
                 input={input}
                 handleInputChange={handleInputChange}
