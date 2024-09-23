@@ -23,8 +23,8 @@ export const ChatContainer = () => {
                 {messages.map((msg) => (
                     <ChatBubble
                         key={msg.id}
-                        message={msg.message}
-                        isUser={msg.isUser} 
+                        message={msg.content}
+                        isUser={msg.role == 'user'} 
                         onRemove={() => console.log('remove message', msg.id)}
                     />
                 ))}
