@@ -1,9 +1,17 @@
 import { openai } from '@ai-sdk/openai'
 import { convertToCoreMessages, streamText } from 'ai'
+import { Ratelimit } from '@upstash/ratelimit';
+import kv from '@vercel/kv';
+
+const ratelimit = new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.fixedWindow(5, '30s'),
+});
+
 
 export async function POST(request) {
     const { messages } = await request.json()
-    
+
     const result = await streamText({
         model: openai('gpt-4o'),
         messages: convertToCoreMessages(messages),
