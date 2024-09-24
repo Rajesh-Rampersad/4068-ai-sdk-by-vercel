@@ -5,11 +5,18 @@ import kv from '@vercel/kv';
 
 const ratelimit = new Ratelimit({
     redis: kv,
-    limiter: Ratelimit.fixedWindow(5, '30s'),
+    limiter: Ratelimit.fixedWindow(2, '60s'),
 });
 
-
 export async function POST(request) {
+    const ip = request.ip ?? 'ip';
+    const { success, remaining } = await ratelimit.limit(ip);
+    console.log(remaining)
+    console.log(success)
+    if (!success) {
+      return new Response('Limite de mensagens atingido!', { status: 429 });
+    }
+
     const { messages } = await request.json()
 
     const result = await streamText({
