@@ -1,15 +1,41 @@
-import styles from './chat.module.css'
-import { IconSend } from "../Icons"
+// 'use client'
+// import styles from './chat.module.css'
+// import { IconSend } from "../Icons"
 
-export const ChatForm = () => {
-    return (<form className={styles.form}>
-        <input 
-            className={styles.input} 
-            placeholder="Digite sua mensagem..."
-            required
-        />
-        <button  className={styles.btn}>
-            <IconSend />
-        </button>
-    </form>)
-}
+// export const ChatForm = ({ input, handleInputChange, handleSubmit }) => {
+//     return (<form className={styles.form} onSubmit={handleSubmit}>
+//         <input 
+//             className={styles.input} 
+//             placeholder="Digite sua mensagem..."
+//             required
+//             onChange={handleInputChange}
+//             value={input}
+//         />
+//         <button  className={styles.btn}>
+//             <IconSend />
+//         </button>
+//     </form>)
+// }
+
+
+// chatForm/index.jsx
+'use client'
+import styles from './chat.module.css';
+import { IconSend } from '../Icons';
+
+export const ChatForm = ({ input, handleInputChange, handleSubmit }) => {
+    return (
+        <form className={styles.form} onSubmit={handleSubmit}>
+            <input 
+                className={styles.input} 
+                placeholder='Digite sua mensagem...'
+                required
+                onChange={handleInputChange}
+                value={input}
+            />
+            <button className={styles.btn} type='submit'>
+                <IconSend />
+            </button>
+        </form>
+    );
+};

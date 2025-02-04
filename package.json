@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.11",
+    "@ai-sdk/openai": "^1.1.9",
+    "@google/generative-ai": "^0.21.0",
+    "ai": "^4.1.17",
+    "next": "^14.2.23",
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^9.0.1"
@@ -17,5 +20,9 @@
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.11"
-  }
+  },
+  "description": "![](thumbnail.png)",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
